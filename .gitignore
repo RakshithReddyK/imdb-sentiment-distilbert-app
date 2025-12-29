@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Model / data artifacts (keep only distilbert-imdb-model small files)
+*.log
+*.csv
+*.parquet
+distilbert-imdb-model/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
