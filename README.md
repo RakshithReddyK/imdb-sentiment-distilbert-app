@@ -60,4 +60,14 @@ The fine-tuned model and tokenizer are saved in:
 
 ```text
 distilbert-imdb-model/
+```
+> **Note:** Model weights are not committed to the repo due to GitHub size limits.  
+> To run this project, fine-tune DistilBERT using `notebooks/02_imdb_distilbert_finetuning.ipynb` and save it as:
+>
+> ```python
+> model.save_pretrained("distilbert-imdb-model")
+> tokenizer.save_pretrained("distilbert-imdb-model")
+> ```
+>
+> The FastAPI and Streamlit apps will automatically load from this folder.
 
