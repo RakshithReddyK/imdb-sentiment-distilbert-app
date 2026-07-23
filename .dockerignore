@@ -1,0 +1,15 @@
+.git/
+.github/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+notebooks/
+tests/
+artifacts/
+distilbert-imdb-model/
+.DS_Store
+.env

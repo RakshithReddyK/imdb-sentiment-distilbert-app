@@ -1,0 +1,22 @@
+# FastAPI inference service.
+FROM python:3.13-slim
+
+WORKDIR /app
+
+# System deps for torch/transformers wheels are covered by the slim image;
+# add build-essential only if you switch to a platform without prebuilt wheels.
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY api/ ./api/
+
+ENV MODEL_PATH=/app/distilbert-imdb-model \
+    LOG_LEVEL=INFO \
+    PYTHONUNBUFFERED=1
+
+# Mount or bake the fine-tuned model at this path (see README "Model weights").
+VOLUME ["/app/distilbert-imdb-model"]
+
+EXPOSE 8000
+
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
