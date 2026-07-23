@@ -1,7 +1,14 @@
-import streamlit as st
-import requests
+import os
 
-API_URL = "http://127.0.0.1:8000/predict"
+import requests
+import streamlit as st
+
+# Base URL of the FastAPI backend, e.g. "http://127.0.0.1:8000" locally or
+# "http://api:8000" when running under docker-compose. Configure via the
+# API_URL environment variable (see .env.example); defaults to localhost for
+# convenience when running both services on the same machine.
+API_BASE_URL = os.environ.get("API_URL", "http://127.0.0.1:8000")
+PREDICT_URL = f"{API_BASE_URL.rstrip('/')}/predict"
 
 
 def call_api(text: str):
@@ -9,9 +16,12 @@ def call_api(text: str):
         return None, None
 
     try:
-        resp = requests.post(API_URL, json={"text": text})
+        resp = requests.post(PREDICT_URL, json={"text": text}, timeout=30)
     except requests.exceptions.ConnectionError:
-        st.error("Cannot reach backend API. Is FastAPI running on port 8000?")
+        st.error(f"Cannot reach backend API at {API_BASE_URL}. Is the FastAPI service running?")
+        return None, None
+    except requests.exceptions.Timeout:
+        st.error("Request to the backend API timed out.")
         return None, None
 
     if resp.status_code != 200:
