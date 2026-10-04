@@ -10,7 +10,7 @@ The repository contains training notebooks and serving/UI code:
 
 ---
 
-## 🔍 Problem
+## Problem
 
 Classify movie reviews from the IMDB dataset as **Positive** or **Negative**.
 
@@ -20,9 +20,9 @@ Classify movie reviews from the IMDB dataset as **Positive** or **Negative**.
 
 ---
 
-## 🧠 Models
+## Models
 
-### 1️⃣ Baseline – TF–IDF + Logistic Regression
+###  Baseline – TF–IDF + Logistic Regression
 
 Implemented in `notebooks/imdb_baseline.ipynb`.
 
@@ -38,7 +38,7 @@ Implemented in `notebooks/imdb_baseline.ipynb`.
 
 ---
 
-### 2️⃣ Fine-Tuned Transformer – DistilBERT
+### Fine-Tuned Transformer – DistilBERT
 
 Implemented in `notebooks/imdb_distilbert.ipynb`.
 
@@ -54,7 +54,7 @@ Implemented in `notebooks/imdb_distilbert.ipynb`.
 | Recall    | **92.19%** |
 | F1-score  | **90.08%** |
 
-> ✅ DistilBERT improves F1 by ~2 percentage points over the classical baseline.
+> DistilBERT improves F1 by ~2 percentage points over the classical baseline.
 
 The fine-tuned model and tokenizer are saved in:
 
