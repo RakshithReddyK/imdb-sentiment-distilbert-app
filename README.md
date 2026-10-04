@@ -2,7 +2,7 @@
 
 End-to-end NLP project that fine-tunes a DistilBERT model on the IMDB movie review dataset and serves it via a FastAPI backend with a Streamlit frontend.
 
-The project demonstrates **full ML lifecycle ownership**:
+The repository contains training notebooks and serving/UI code:
 - classical ML baseline (TF–IDF + Logistic Regression)
 - transformer fine-tuning (DistilBERT)
 - production-style API (FastAPI)
@@ -24,7 +24,7 @@ Classify movie reviews from the IMDB dataset as **Positive** or **Negative**.
 
 ### 1️⃣ Baseline – TF–IDF + Logistic Regression
 
-Implemented in `notebooks/01_imdb_tfidf_baseline.ipynb`.
+Implemented in `notebooks/imdb_baseline.ipynb`.
 
 - Vectorizer: `TfidfVectorizer` with max features and English stopword removal
 - Classifier: `LogisticRegression`
@@ -40,7 +40,7 @@ Implemented in `notebooks/01_imdb_tfidf_baseline.ipynb`.
 
 ### 2️⃣ Fine-Tuned Transformer – DistilBERT
 
-Implemented in `notebooks/02_imdb_distilbert_finetuning.ipynb`.
+Implemented in `notebooks/imdb_distilbert.ipynb`.
 
 - Model: `distilbert-base-uncased` fine-tuned for binary classification
 - Framework: PyTorch + Hugging Face Transformers
@@ -62,7 +62,7 @@ The fine-tuned model and tokenizer are saved in:
 distilbert-imdb-model/
 ```
 > **Note:** Model weights are not committed to the repo due to GitHub size limits.  
-> To run this project, fine-tune DistilBERT using `notebooks/02_imdb_distilbert_finetuning.ipynb` and save it as:
+> To run this project, fine-tune DistilBERT using `notebooks/imdb_distilbert.ipynb` and save it as:
 >
 > ```python
 > model.save_pretrained("distilbert-imdb-model")
@@ -71,3 +71,7 @@ distilbert-imdb-model/
 >
 > The FastAPI and Streamlit apps will automatically load from this folder.
 
+
+## Reproduction status
+
+The tables above are previously reported notebook results; they were not rerun in the October 2026 portfolio audit. Fine-tuned weights are not committed, and the API loads them at import time, so it cannot start until training has produced `distilbert-imdb-model/`. The notebook paths above now match the checked-in filenames. No API load test, production deployment, or model-card evaluation is claimed here.
